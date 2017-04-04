@@ -19,3 +19,7 @@ module ChatSpace
     end
   end
 end
+
+Rails.application.configure do
+  config.i18n.default_locale = :ja
+end
