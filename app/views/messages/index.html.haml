@@ -1,0 +1,37 @@
+#main
+  = render 'application/main_sidebar'
+  #main-chatBox
+    .info
+      .info-desc
+        .info-desc__name
+          hogehoeg_room
+        .info-desc__members
+          %span MEMBER
+          takeshu, mari, ossan....
+      .info-edit
+        %span edit
+    .timeline
+      .timeline-message
+        .timeline-message__user
+          .timeline-message__user__name
+            takeshu
+          .timeline-message__user__date
+            2016/3/31 16:00 -
+        .timeline-message__text
+          hello!今日もいい天気だねー！hello!今日もいい天気だねー！ ello!今日もいい天気だねー！
+      .timeline-message
+        .timeline-message__user
+          .timeline-message__user__name
+            takeshu
+          .timeline-message__user__date
+            2016/3/31 16:00 -
+        .timeline-message__text
+          hello!今日もいい天気だねー！hello!今日もいい天気だねー！ ello!今日もいい天気だねー！
+    .input
+      .input-area
+        .input-area__text
+          ssfjlkasjfalksfjlskdfjlsakjflasjflsdfjksajfkaljfkl
+        .input-area__file
+          = fa_icon "file-image-o"
+      = link_to root_path, class: 'input-send' do
+        %span edit
