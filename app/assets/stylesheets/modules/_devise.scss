@@ -1,0 +1,92 @@
+.auth{
+  height: 100%;
+  width: 100%;
+  &-inner{
+    width: 980px;
+    margin: 60px auto;
+    padding: 60px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    &__left{
+      float: left;
+      width: 50%;
+      h2{
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+        font-size: 40px;
+        font-weight: 200;
+        &:after{
+          content: '';
+          display: block;
+          width: 60px;
+          margin-top: 5px;
+          border-bottom: 1px solid $skyBlue;
+        }
+      }
+      .desc{
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .action{
+        display: table;
+        border-collapse: separate;
+        border-spacing: 5px 0;
+        color: #fff;
+        margin-top: 20px;
+        &-btn{
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          font-size: 14px;
+          color: $fontWhite;
+          text-decoration: none;
+          background-color: #ccc;
+          border-radius: 2px;
+          padding: 10px 30px;
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+    &__right{
+      float: left;
+      width: 50%;
+      .deviseErr{
+      }
+      .field{
+        margin: 0 0 10px 0;
+        &-title{
+          display: block;
+          font-size: 14px;
+          letter-spacing: 1px;
+          padding: 10px 0;
+          i{
+            font-size: 10px;
+          }
+        }
+        &-input{
+          display: block;
+          letter-spacing: 1px;
+          width: 100%;
+          padding: 10px;
+        }
+      }
+      .submit{
+        display: table;
+        margin-top: 20px;
+        &-btn{
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          font-size: 14px;
+          color: $fontWhite;
+          text-decoration: none;
+          background-color: $skyBlue;
+          border: none;
+          border-radius: 2px;
+          padding: 10px 30px;
+        }
+      }
+    }
+  }
+}

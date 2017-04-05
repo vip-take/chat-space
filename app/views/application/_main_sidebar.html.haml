@@ -2,10 +2,11 @@
   .user
     .user-inner
       .user-inner__name__text
-        takeshu
+        = current_user.name
       .user-inner__name__edit
         = fa_icon "pencil-square-o"
-        = fa_icon "cog"
+        = link_to edit_user_registration_path do
+          = fa_icon "cog"
   .room
     .room-desc
       .room-desc__name

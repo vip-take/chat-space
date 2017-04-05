@@ -12,6 +12,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'haml-rails', '~> 0.9'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'rails-i18n', '~> 5.0.0'
 
 # js関連のgem
 gem 'uglifier', '>= 1.3.0'
