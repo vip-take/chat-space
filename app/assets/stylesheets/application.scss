@@ -2,7 +2,8 @@
 @import "./config/reset";
 @import "./config/variables";
 @import "./config/common";
+@import "./config/flash";
 @import "./modules/main";
 @import "./modules/main_sidebar";
 @import "./modules/devise";
-@import "./config/flash";
+@import "./modules/group";
