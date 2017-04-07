@@ -1,6 +1,8 @@
 #main-chatBox{
   height: 100%;
   width: calc( 100vw - 300px );
+  float: left;
+  word-wrap: break-word;
   .info{
     height: 15%;
     width: 100%;
@@ -97,10 +99,19 @@
       display: table;
       height: 50px;
       width: 100px;
+      color: #fff;
       text-decoration: none;
       background-color: $skyBlue;
       margin: 0 0 0 15px;
       padding: 0 10px;
+      border: none;
+      span{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+      }
     }
   }
 }

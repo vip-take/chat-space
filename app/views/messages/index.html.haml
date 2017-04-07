@@ -13,13 +13,13 @@
         .info-edit
           %span edit
     .timeline
-      - @group.messages.each do |msg|
+      - @messages.each do |msg|
         .timeline-message
           .timeline-message__user
             .timeline-message__user__name
               = msg.user.name
             .timeline-message__user__date
-              = msg.created_at
+              = l msg.created_at
           .timeline-message__text
             = msg.comment
     .input

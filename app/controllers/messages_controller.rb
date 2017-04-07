@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_user_groups, only: [:index]
   before_action :set_group, only: [:index]
+  before_action :set_messages, only: [:index]
 
   include Groups
 
@@ -28,5 +29,9 @@ class MessagesController < ApplicationController
 
     def set_group
       @group = Group.find(params[:id])
+    end
+
+    def set_messages
+      @messages = Group.find(params[:id]).messages.includes(:user).references(:user)
     end
 end
