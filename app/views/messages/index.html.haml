@@ -1,15 +1,17 @@
 #main
-  = render 'application/main_sidebar'
+  = render 'application/main_sidebar', groups: @groups
   #main-chatBox
     .info
       .info-desc
         .info-desc__name
-          hogehoeg_room
+          = @group.name
         .info-desc__members
           %span MEMBER
-          takeshu, mari, ossan....
-      .info-edit
-        %span edit
+          - @group.users.each do |user|
+            = user.name
+      = link_to edit_group_path(@group.id) do
+        .info-edit
+          %span edit
     .timeline
       .timeline-message
         .timeline-message__user

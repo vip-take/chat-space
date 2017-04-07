@@ -10,16 +10,8 @@
           = fa_icon "cog"
   .room
     .room-desc
-      .room-desc__name
-        hogehoge_room
-      .room-desc__message
-        hello!今日もいい天気だねー！
-    .room-desc
-      .room-desc__name
-        hogehoge_room
-      .room-desc__message
-        hello!今日もいい天気だねー！
-    .room-desc
-      .room-desc__name
-        hogehoge_room
-      .room-desc__message
+      - groups.each do |group|
+        .room-desc__name
+          = link_to group.name, messages_path(group)
+        .room-desc__message
+          hello!今日もいい天気だね！
