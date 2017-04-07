@@ -78,10 +78,13 @@
       background-color: #fff;
       padding: 0 10px;
       &__text{
+        height: 50px;
+        width: 100%;
         display: table-cell;
         vertical-align: middle;
         font-size: 16px;
         color: $lightGray;
+        border: none;
       }
       &__file{
         width: 20px;
@@ -98,13 +101,6 @@
       background-color: $skyBlue;
       margin: 0 0 0 15px;
       padding: 0 10px;
-      span{
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        color: #fff;
-        font-weight: bold;
-      }
     }
   }
 }

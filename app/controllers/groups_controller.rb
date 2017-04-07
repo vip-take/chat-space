@@ -44,7 +44,6 @@ class GroupsController < ApplicationController
     end
 
     def set_all_users
-      #@users = User.where.not(id: current_user.id).order_by_name
       @users = User.order_by_name
     end
 end

@@ -13,27 +13,19 @@
         .info-edit
           %span edit
     .timeline
-      .timeline-message
-        .timeline-message__user
-          .timeline-message__user__name
-            takeshu
-          .timeline-message__user__date
-            2016/3/31 16:00 -
-        .timeline-message__text
-          hello!今日もいい天気だねー！hello!今日もいい天気だねー！ ello!今日もいい天気だねー！
-      .timeline-message
-        .timeline-message__user
-          .timeline-message__user__name
-            takeshu
-          .timeline-message__user__date
-            2016/3/31 16:00 -
-        .timeline-message__text
-          hello!今日もいい天気だねー！hello!今日もいい天気だねー！ ello!今日もいい天気だねー！
+      - @group.messages.each do |msg|
+        .timeline-message
+          .timeline-message__user
+            .timeline-message__user__name
+              = msg.user.name
+            .timeline-message__user__date
+              = msg.created_at
+          .timeline-message__text
+            = msg.comment
     .input
-      .input-area
-        .input-area__text
-          ssfjlkasjfalksfjlskdfjlsakjflasjflsdfjksajfkaljfkl
-        .input-area__file
-          = fa_icon "file-image-o"
-      = link_to root_path, class: 'input-send' do
-        %span edit
+      = form_for @message do |f|
+        .input-area
+          = f.text_field :comment, placeholder: 'ここにメッセージをどうぞ', class: 'input-area__text'
+          .input-area__file
+            = fa_icon "file-image-o"
+        = f.submit 'SEND', class: 'input-send'
