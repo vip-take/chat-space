@@ -25,7 +25,7 @@
     .input
       = form_for @message do |f|
         .input-area
-          = f.text_field :comment, placeholder: 'ここにメッセージをどうぞ', class: 'input-area__text'
+          = f.text_field :comment, placeholder: 'ここにメッセージをどうぞ', class: 'input-area__text', id: 'js-comment-input'
           .input-area__file
             = fa_icon "file-image-o"
-        = f.submit 'SEND', class: 'input-send'
+        = f.submit 'SEND', class: 'input-send', id: 'js-comment-send'

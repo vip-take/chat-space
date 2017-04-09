@@ -12,14 +12,32 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(create_params)
     if @message.save
-      flash[:notice] = 'メッセージを送りました'
+      respond_to do |format|
+        format.html{
+          flash[:notice] = 'メッセージを送りました'
+          redirect_to messages_path(params[:id])
+        }
+        format.json{
+          render json: {
+            name: @message.user.name,
+            comment: @message.comment,
+            created_at: l(@message.created_at)
+          }
+        }
+      end
     else
-      flash[:alert] = "メッセージの送信に失敗しました。"
-      @message.errors.full_messages.each do |msg|
-        flash[:alert] << msg
+      respond_to do |format|
+        format.html{
+          flash[:alert] = "メッセージの送信に失敗しました。"
+          @message.errors.full_messages.each do |msg|
+            flash[:alert] << msg
+          end
+        }
+        format.json{
+          render json: { status: 'fail' }
+        }
       end
     end
-    redirect_to messages_path(params[:id])
   end
 
   private
