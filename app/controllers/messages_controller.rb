@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
         flash[:alert] << msg
       end
     end
-    redirect_to :back
+    redirect_to messages_path(params[:id])
   end
 
   private
