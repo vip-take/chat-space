@@ -15,9 +15,10 @@
     .timeline
       = render 'messages/message', messages: @messages
     .input
-      = form_for @message do |f|
+      = form_for @message, multipart: true do |f|
         .input-area
           = f.text_field :comment, placeholder: 'ここにメッセージをどうぞ', class: 'input-area__text', id: 'js-comment-input'
           .input-area__file
             = fa_icon "file-image-o"
+            = f.file_field :image, id: 'js-file-input'
         = f.submit 'SEND', class: 'input-send', id: 'js-comment-send'

@@ -64,6 +64,12 @@
         font-size: 14px;
         color: $lightGray;
       }
+      &__image{
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }
     }
   }
   .input{
@@ -91,6 +97,9 @@
         width: 20px;
         display: table-cell;
         vertical-align: middle;
+      }
+      #js-file-input{
+        display: none;
       }
     }
     &-send{

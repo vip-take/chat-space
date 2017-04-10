@@ -7,3 +7,5 @@
         = l msg.created_at
     .timeline-message__text
       = msg.comment
+    - if msg.image.present?
+      = image_tag msg.image, class: 'timeline-message__image'

@@ -1,22 +1,32 @@
 $(function() {
   $('#js-comment-send').on('click', function(e){
     e.preventDefault();
-    var comment = $('#js-comment-input').val();
+    // var comment = $('#js-comment-input').val();
+    var form = $('#new_message').get()[0];
+    // var image = $('#js-file-input');
+    var formData = new FormData(form);
     var postUrl = $('.new_message').attr('action')
     $.ajax({
       type: 'POST',
       url: postUrl,
-      data: {
-        message: {
-          comment: comment
-        }
-      },
-      dataType: 'json'
+      dataType: 'json',
+      data: formData,
+      processData: false,
+      contentType: false
     })
     .done(function(data){
-      var addTxt = "<div class='timeline-message'> <div class='timeline-message__user'> <div class='timeline-message__user__name'>" + data.name + " </div> <div class='timeline-message__user__date'>" + data.created_at + "</div> </div> <div class='timeline-message__text'>" + data.comment + "</div> </div>";
-      $('.timeline').append(addTxt);
+      var addUser = "<div class='timeline-message'><div class='timeline-message__user'><div class='timeline-message__user__name'>" + data.name + " </div><div class='timeline-message__user__date'>" + data.created_at + "</div></div></div>";
+      $('.timeline').append(addUser);
+      // TODO:後で分岐挿入
+      var addText = "<div class='timeline-message__text'>" + data.comment + "</div>";
+      $('.timeline .timeline-message:last-child').append(addText);
+
+      // TODO:後で分岐挿入
+      var addImage = "<img class='timeline-message__image' src='" + data.image.url + "' alt='Pylamid'>";
+
+      $('.timeline .timeline-message:last-child').append(addImage);
       $('#js-comment-input').val('');
+      $('#js-file-input').val('');
     })
     // TODO:error処理は後で書く
     .fail(function(){

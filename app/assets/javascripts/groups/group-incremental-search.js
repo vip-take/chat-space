@@ -22,9 +22,7 @@ $(function() {
       $(document).on('click', '#chat-group-form__ul li', function(){
         var userId = $(this).attr('data-user_id');
         var searchId = "#group_user_ids_" + userId
-        debugger;
         if ( $(searchId).length == 0 ){
-          debugger;
           var userName = $(this)[0].innerText;
           var addHtml = "<input type='checkbox' checked='checked' value='" + userId + "' name='group[user_ids][]'' id='group_user_ids_" + userId + "'><label for='group_user_ids_" + userId + "'>" + userName + "</label>";
           $('#chat-group-user-22').append(addHtml);

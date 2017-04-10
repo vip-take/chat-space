@@ -21,6 +21,7 @@ class MessagesController < ApplicationController
           render json: {
             name: @message.user.name,
             comment: @message.comment,
+            image: @message.image,
             created_at: l(@message.created_at)
           }
         }
@@ -42,7 +43,7 @@ class MessagesController < ApplicationController
 
   private
     def create_params
-      params.require(:message).permit(:comment).merge(user_id: current_user.id, group_id: params[:id])
+      params.require(:message).permit(:comment, :image).merge(user_id: current_user.id, group_id: params[:id])
     end
 
     def set_group

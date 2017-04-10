@@ -13,6 +13,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'rails-i18n', '~> 5.0.0'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 # js関連のgem
 gem 'uglifier', '>= 1.3.0'
