@@ -1,11 +1,11 @@
 #main-sideBar{
-  height: 100%;
   width: 300px;
   float: left;
   color: $sideFontColor;
   background-color: #253141;
+  clear: both;
   .user{
-    height: 15%;
+    height: 100px;
     width: 100%;
     padding: 0 20px;
     background-color: #000;
@@ -30,14 +30,18 @@
     }
   }
   .room{
+    height: calc( 100vh - 100px);
     width: 100%;
     word-wrap: break-word;
-    padding: 20px;
     color: $sideFontColor;
-    &:hover{
-      opacity: 0.8;
-    }
+    padding: 20px;
+    overflow-y: scroll;
     &-desc{
+      color: $sideFontColor;
+      padding: 20px;
+        &:hover{
+          opacity: 0.8;
+        }
       &__name{
         font-size: 15px;
         margin: 0 0 5px 0;

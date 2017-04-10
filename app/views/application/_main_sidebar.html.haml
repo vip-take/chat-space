@@ -8,11 +8,14 @@
           = fa_icon "pencil-square-o"
         = link_to edit_user_registration_path do
           = fa_icon "cog"
-  - groups.each do |group|
-    = link_to messages_path(group) do
-      .room
+  .room
+    - groups.each do |group|
+      = link_to messages_path(group) do
         .room-desc
-          .room-desc__name
+          .room-desc__name.clearfix
             = group.name
           .room-desc__message
-            hello!今日もいい天気だね！
+            - if group.messages.present?
+              = group.messages.last.comment
+            - else
+              まだメッセージはありません
