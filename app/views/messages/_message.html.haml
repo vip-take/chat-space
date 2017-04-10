@@ -1,0 +1,9 @@
+- messages.each do |msg|
+  .timeline-message
+    .timeline-message__user
+      .timeline-message__user__name
+        = msg.user.name
+      .timeline-message__user__date
+        = l msg.created_at
+    .timeline-message__text
+      = msg.comment

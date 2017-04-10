@@ -13,15 +13,7 @@
         .info-edit
           %span edit
     .timeline
-      - @messages.each do |msg|
-        .timeline-message
-          .timeline-message__user
-            .timeline-message__user__name
-              = msg.user.name
-            .timeline-message__user__date
-              = l msg.created_at
-          .timeline-message__text
-            = msg.comment
+      = render 'messages/message', messages: @messages
     .input
       = form_for @message do |f|
         .input-area
