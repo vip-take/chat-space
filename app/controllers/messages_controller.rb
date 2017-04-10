@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
           end
         }
         format.json{
-          render json: { status: 'fail' }
+          render json: @message.errors, status: :unprocessable_entity
         }
       end
     end

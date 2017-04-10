@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  scope :order_by_name, -> { order(name: :asc) }
+  scope :order_by_name_without, ->(id) { order(name: :asc).where.not(id: id) }
+  scope :with_name, ->(text) { where('name LIKE ?', "#{text}%" ) }
 
 end

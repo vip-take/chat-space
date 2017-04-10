@@ -8,5 +8,10 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :create]
     end
   end
+  resources :users, only: [] do
+    collection do
+      get 'search', formart: 'json'
+    end
+  end
 
 end

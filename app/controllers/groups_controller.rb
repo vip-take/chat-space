@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   before_action :set_user_groups, only: [:index]
-  before_action :set_all_users, only: [:new, :edit]
+  before_action :set_group_members, only: [:edit] #あとでindexも
 
   include Groups
 
@@ -43,8 +43,8 @@ class GroupsController < ApplicationController
        @group = Group.find(params[:id])
     end
 
-    def set_all_users
-      @users = User.order_by_name
+    def set_group_members
+      @users = @group.users.order_by_name_without(current_user.id)
     end
 end
 
