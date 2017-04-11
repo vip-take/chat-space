@@ -1,9 +1,7 @@
 $(function() {
   $('#js-comment-send').on('click', function(e){
     e.preventDefault();
-    // var comment = $('#js-comment-input').val();
     var form = $('#new_message').get()[0];
-    // var image = $('#js-file-input');
     var formData = new FormData(form);
     var postUrl = $('.new_message').attr('action')
     $.ajax({
