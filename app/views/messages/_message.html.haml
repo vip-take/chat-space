@@ -4,7 +4,7 @@
       .timeline-message__user__name
         = msg.user.name
       .timeline-message__user__date
-        = l msg.created_at
+        = msg.created_time
     .timeline-message__text
       = msg.comment
     - if msg.image.present?

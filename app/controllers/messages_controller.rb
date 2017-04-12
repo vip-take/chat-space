@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
             name: @message.user.name,
             comment: @message.comment,
             image: @message.image,
-            created_at: l(@message.created_at)
+            created_at: @message.created_time
           }
         }
       end
