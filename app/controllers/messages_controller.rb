@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_user_groups, only: [:index]
+  before_action :set_user_has_groups, only: [:index]
   before_action :set_group, only: [:index]
   before_action :set_messages, only: [:index]
 

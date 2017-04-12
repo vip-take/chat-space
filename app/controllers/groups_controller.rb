@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   before_action :set_group_members, only: [:edit]
+  before_action :set_user_has_groups, only: [:index]
 
   include Groups
 
