@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
-  before_action :set_user_groups, only: [:index]
-  before_action :set_group_members, only: [:edit] #あとでindexも
+  before_action :set_group_members, only: [:edit]
 
   include Groups
 
@@ -17,7 +16,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       flash[:notice] = 'グループ作成成功'
-      redirect_to root_path
+      redirect_to groups_path
     else
       flash.now[:alert] = 'グループ作成失敗'
       render :new
