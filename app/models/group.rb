@@ -8,8 +8,9 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, null: false, uniqueness: true
 
-  def group_members_present?
-    self.user_ids.present?
-  end
+  private
+    def group_members_present?
+      self.user_ids.present?
+    end
 
 end
