@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     if @users.present?
       render json: @users
     else
-      # TODO:後で見直す
-      render json: {error: 'no match'}, status: :bad_request
+      render json: {error: 'no match'}, status: :not_found
     end
   end
 
