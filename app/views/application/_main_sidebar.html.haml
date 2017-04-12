@@ -9,13 +9,14 @@
         = link_to edit_user_registration_path do
           = fa_icon "cog"
   .room
-    - groups.each do |group|
-      = link_to messages_path(group) do
-        .room-desc
-          .room-desc__name.clearfix
-            = group.name
-          .room-desc__message
-            - if group.messages.present?
-              = group.messages.last.comment
-            - else
-              まだメッセージはありません
+    - if groups.present?
+      - groups.each do |group|
+        = link_to messages_path(group) do
+          .room-desc
+            .room-desc__name.clearfix
+              = group.name
+            .room-desc__message
+              - if group.messages.present?
+                = group.messages.last.comment
+              - else
+                まだメッセージはありません
