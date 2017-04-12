@@ -31,7 +31,6 @@ $(function() {
       $('#js-comment-input').val('');
       $('#js-file-input').val('');
     })
-    // TODO:error処理は後で書く
     .fail(function(){
       alert('失敗しました');
     })
