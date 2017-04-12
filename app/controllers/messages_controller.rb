@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(create_params)
+    @message = current_user.messages.new(create_params)
     if @message.save
       respond_to do |format|
         format.html{
@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
 
   private
     def create_params
-      params.require(:message).permit(:comment, :image).merge(user_id: current_user.id, group_id: params[:id])
+      params.require(:message).permit(:comment, :image).merge(group_id: params[:id])
     end
 
     def set_group
