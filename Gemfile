@@ -26,6 +26,10 @@ gem 'jquery-rails'
 # gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
