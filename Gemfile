@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rails-controller-testing'
 
   # capistrano自動デプロイ
-  gem 'capistrano'
+  gem 'capistrano', '3.8.0'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
