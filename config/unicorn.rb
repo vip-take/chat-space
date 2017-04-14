@@ -1,40 +1,48 @@
-app_path = File.expand_path('../../../', __FILE__)
+# app_path = File.expand_path('../../../', __FILE__)
+app_path = '/var/www/chat-space'
+shared_path = "#{app_path}/shared"
+current_path = "#{app_path}/current"
 
-working_directory app_path
-pid "#{app_path}/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/log/unicorn.stderr.log"
-stdout_path "#{app_path}/log/unicorn.stdout.log"
+working_directory current_path
+pid File.expand_path('tmp/pids/unicorn.pid', shared_path)
+listen File.expand_path('tmp/sockets/unicorn.sock', shared_path), :backlog => 64
+
+# logging
+stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+
+preload_app true
 
 listen 3000
 timeout 60
+worker_processes 4
 
-preload_app true
-GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
-
-check_client_connection false
-
-run_once = true
+# use correct Gemfile on restarts
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+end
 
 before_fork do |server, worker|
-  defined?(ActiveRecord::Base) &&
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
-
-  if run_once
-    run_once = false # prevent from firing again
   end
 
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
   old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exist?(old_pid) && server.pid != old_pid
+  if File.exists?(old_pid) && server.pid != old_pid
     begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH => e
-      logger.error e
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
     end
   end
 end
 
-after_fork do |_server, _worker|
-  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
+after_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
 end
-
