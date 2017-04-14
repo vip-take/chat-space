@@ -8,8 +8,6 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server "54.64.176.128", user: "ec2-user", roles: %w{app db web}
 
-
-
 # role-based syntax
 # ==================
 
@@ -31,8 +29,6 @@ server "54.64.176.128", user: "ec2-user", roles: %w{app db web}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
