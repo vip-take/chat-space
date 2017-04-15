@@ -7,6 +7,16 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+    respond_to do |format|
+      format.html{}
+      format.json{
+        if @messages.pluck('id').last != params[:message_id].to_i
+          render json: { reload: true }
+        else
+          render json: { reload: false}
+        end
+      }
+    end
   end
 
   def create

@@ -1,5 +1,5 @@
 - messages.each do |msg|
-  .timeline-message
+  = content_tag(:div, class: 'timeline-message', data: { message_id: msg.id }) do
     .timeline-message__user
       .timeline-message__user__name
         = msg.user.name

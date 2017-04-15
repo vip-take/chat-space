@@ -4,7 +4,6 @@ $(function() {
     var form = $('#new_message').get()[0];
     var formData = new FormData(form);
     var postUrl = $('.new_message').attr('action')
-    console.log(formData);
 
     $.ajax({
       type: 'POST',
